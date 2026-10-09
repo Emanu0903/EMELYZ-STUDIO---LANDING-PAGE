@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMELYZ STUDIO | Salón de belleza</title>
+<meta name="description" content="Corte, color, uñas, maquillaje y más en EMELYZ STUDIO. Mira nuestros servicios, trabajos, horarios y ubicación, y agenda tu cita por WhatsApp.">
+<meta name="theme-color" content="#2B1530">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#inicio">EMELYZ STUDIO</a>
+    <nav id="nav" aria-label="Principal">
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#visitanos">Horarios y ubicación</a></li>
+      </ul>
+    </nav>
+    <a class="btn head-cta" data-wa href="#">Agendar cita</a>
+    <button class="menu" id="menu" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <h1>Sal con el look que imaginaste.</h1>
+        <p>Cabello, uñas, maquillaje y cejas en un solo lugar. Escríbenos por WhatsApp, te confirmamos disponibilidad y reservas tu cita en minutos.</p>
+        <div class="actions">
+          <a class="btn" data-wa="Hola, quiero consultar disponibilidad para una cita." href="#">Consultar disponibilidad</a>
+          <a class="btn ghost" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+      <!-- Reemplazar el texto por: <img src="assets/img/hero.jpg" alt="Clienta en EMELYZ STUDIO"> -->
+      <figure class="ph arch">Foto principal</figure>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <h2>Servicios</h2>
+      <p class="lead">Elige el servicio y te escribimos con precio y horarios disponibles. Los precios se confirman al consultar.</p>
+      <ul class="services" id="servicesList"></ul>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <div class="wrap">
+      <h2>Nuestros trabajos</h2>
+      <p class="lead">Resultados reales de nuestras clientas.</p>
+      <!-- Reemplazar cada texto por: <img src="assets/img/trabajo-1.jpg" alt="Descripción del trabajo" loading="lazy"> -->
+      <div class="gallery">
+        <figure class="ph">Foto 1</figure><figure class="ph">Foto 2</figure><figure class="ph">Foto 3</figure>
+        <figure class="ph">Foto 4</figure><figure class="ph">Foto 5</figure><figure class="ph">Foto 6</figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="visitanos">
+    <div class="wrap">
+      <h2>Horarios y ubicación</h2>
+      <div class="visit">
+        <div>
+          <span class="status" id="status">Revisando horario…</span>
+          <table><tbody id="hours"></tbody></table>
+          <p><strong>Dirección:</strong> [Dirección del local, colonia, ciudad]</p>
+          <p style="margin:.5rem 0 1.5rem">Si no encuentras el local, escríbenos y te enviamos la ubicación.</p>
+          <a class="btn" data-wa="Hola, necesito indicaciones para llegar al salón." href="#">Pedir indicaciones</a>
+        </div>
+        <!-- Reemplazar q= por la dirección exacta o usar "Compartir > Insertar mapa" de Google Maps -->
+        <iframe class="map" title="Mapa de EMELYZ STUDIO" loading="lazy" src="https://www.google.com/maps?q=EMELYZ+STUDIO&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>¿Tienes una fecha en mente?</h2>
+      <p class="lead">Cuéntanos qué servicio quieres y el día que prefieres. Te respondemos con los horarios libres.</p>
+      <a class="btn" data-wa href="#">Agendar por WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> EMELYZ STUDIO · [Instagram / Facebook]</div>
+</footer>
+
+<a class="fab" data-wa href="#" aria-label="Escribir por WhatsApp">💬 WhatsApp</a>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
