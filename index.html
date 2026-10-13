@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EMELYZ STUDIO | Salón de belleza</title>
-<meta name="description" content="Corte, color, uñas, maquillaje y más en EMELYZ STUDIO. Mira nuestros servicios, trabajos, horarios y ubicación, y agenda tu cita por WhatsApp.">
+<title>EMILYZ STUDIO | Estudio de cejas y pestañas</title>
+<meta name="description" content="Realza tu belleza natural en EMILYZ STUDIO: extensiones y lifting de pestañas, tinte, laminado y depilación de cejas. Consulta precios y agenda por WhatsApp.">
 <meta name="theme-color" content="#2B1530">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
 
 <header>
   <div class="wrap bar">
-    <a class="logo" href="#inicio">EMELYZ STUDIO</a>
+    <a class="logo" href="#inicio">EMILYZ STUDIO</a>
     <nav id="nav" aria-label="Principal">
       <ul>
         <li><a href="#servicios">Servicios</a></li>
@@ -24,7 +24,7 @@
       </ul>
     </nav>
     <a class="btn head-cta" data-wa href="#">Agendar cita</a>
-    <button class="menu" id="menu" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <button class="menu" id="menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">☰</button>
   </div>
 </header>
 
@@ -32,23 +32,22 @@
   <section class="hero" id="inicio">
     <div class="wrap">
       <div>
-        <h1>Sal con el look que imaginaste.</h1>
-        <p>Cabello, uñas, maquillaje y cejas en un solo lugar. Escríbenos por WhatsApp, te confirmamos disponibilidad y reservas tu cita en minutos.</p>
+        <h1>Realza tu belleza natural.</h1>
+        <p>Somos un estudio de cejas y pestañas. Resaltamos tu mirada con servicios personalizados, atención cercana y cuidado en cada detalle. Escríbenos por WhatsApp y reserva tu cita.</p>
         <div class="actions">
           <a class="btn" data-wa="Hola, quiero consultar disponibilidad para una cita." href="#">Consultar disponibilidad</a>
           <a class="btn ghost" href="#servicios">Ver servicios</a>
         </div>
       </div>
-      <!-- Reemplazar el texto por: <img src="assets/img/hero.jpg" alt="Clienta en EMELYZ STUDIO"> -->
-      <figure class="ph arch">Foto principal</figure>
+      <figure class="ph arch"><img src="assets/web/portada.jpg" alt="Interior de Emilyz Studio con el nombre del estudio en la pared y su área de atención" width="4080" height="2296" fetchpriority="high"></figure>
     </div>
   </section>
 
   <section id="servicios">
     <div class="wrap">
       <h2>Servicios</h2>
-      <p class="lead">Elige el servicio y te escribimos con precio y horarios disponibles. Los precios se confirman al consultar.</p>
-      <ul class="services" id="servicesList"></ul>
+      <p class="lead">Elige cómo quieres realzar tu mirada. Consulta nuestros precios y escríbenos para encontrar el horario ideal para ti.</p>
+      <div class="service-categories" id="servicesList"></div>
     </div>
   </section>
 
@@ -56,10 +55,13 @@
     <div class="wrap">
       <h2>Nuestros trabajos</h2>
       <p class="lead">Resultados reales de nuestras clientas.</p>
-      <!-- Reemplazar cada texto por: <img src="assets/img/trabajo-1.jpg" alt="Descripción del trabajo" loading="lazy"> -->
       <div class="gallery">
-        <figure class="ph">Foto 1</figure><figure class="ph">Foto 2</figure><figure class="ph">Foto 3</figure>
-        <figure class="ph">Foto 4</figure><figure class="ph">Foto 5</figure><figure class="ph">Foto 6</figure>
+        <figure class="ph"><img src="assets/web/pestanas-detalle.jpg" alt="Detalle de extensiones de pestañas realizadas en el estudio" loading="lazy" width="1200" height="1600"></figure>
+        <figure class="ph"><img src="assets/web/cejas-definidas.jpg" alt="Cejas definidas y cuidadas en Emilyz Studio" loading="lazy" width="1200" height="1600"></figure>
+        <figure class="ph"><img src="assets/web/mirada.jpg" alt="Resultado de pestañas que realzan la mirada" loading="lazy" width="1200" height="1600"></figure>
+        <figure class="ph"><img src="assets/web/pestanas-volumen.jpg" alt="Vista de cerca de un trabajo de extensiones de pestañas" loading="lazy" width="1200" height="1600"></figure>
+        <figure class="ph"><img src="assets/web/cejas-pestanas.jpg" alt="Resultado de cejas y pestañas en una clienta del estudio" loading="lazy" width="1200" height="1600"></figure>
+        <figure class="ph"><img src="assets/web/perfil.jpg" alt="Vista de perfil del acabado de cejas y pestañas" loading="lazy" width="1200" height="1600"></figure>
       </div>
     </div>
   </section>
@@ -73,10 +75,10 @@
           <table><tbody id="hours"></tbody></table>
           <p><strong>Dirección:</strong> [Dirección del local, colonia, ciudad]</p>
           <p style="margin:.5rem 0 1.5rem">Si no encuentras el local, escríbenos y te enviamos la ubicación.</p>
-          <a class="btn" data-wa="Hola, necesito indicaciones para llegar al salón." href="#">Pedir indicaciones</a>
+          <a class="btn" data-wa="Hola, necesito indicaciones para llegar al estudio." href="#">Pedir indicaciones</a>
         </div>
         <!-- Reemplazar q= por la dirección exacta o usar "Compartir > Insertar mapa" de Google Maps -->
-        <iframe class="map" title="Mapa de EMELYZ STUDIO" loading="lazy" src="https://www.google.com/maps?q=EMELYZ+STUDIO&output=embed"></iframe>
+        <iframe class="map" title="Mapa de EMILYZ STUDIO" loading="lazy" src="https://www.google.com/maps?q=EMILYZ+STUDIO&output=embed"></iframe>
       </div>
     </div>
   </section>
@@ -91,7 +93,7 @@
 </main>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> EMELYZ STUDIO · [Instagram / Facebook]</div>
+  <div class="wrap">© <span id="year"></span> EMILYZ STUDIO · Estudio de cejas y pestañas</div>
 </footer>
 
 <a class="fab" data-wa href="#" aria-label="Escribir por WhatsApp">💬 WhatsApp</a>

@@ -10,7 +10,7 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--rose);outline-offset:3px}
 .wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
 section{padding:5rem 0}
-h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.02em}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.05;letter-spacing:-.02em}
 h1{font-size:clamp(2.6rem,7vw,4.9rem);font-weight:800}
 h2{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:800;margin-bottom:.75rem}
 h3{font-size:1.25rem;font-weight:500}
@@ -40,11 +40,19 @@ nav a:hover{color:var(--rose)}
 .ph{background:linear-gradient(160deg,#EFA9CB,#8C4A9A);display:grid;place-items:center;color:#fff;font-size:.9rem;text-align:center;overflow:hidden}
 .ph img{width:100%;height:100%;object-fit:cover}
 .arch{border-radius:999px 999px 1.5rem 1.5rem;aspect-ratio:3/4;width:100%;max-width:420px;justify-self:end}
+.hero .arch{position:relative}
+.hero .arch img{position:absolute;inset:0;object-position:left center}
 
 /* Servicios */
 #servicios{background:var(--ink);color:#fff}
 #servicios .lead{color:var(--lilac)}
-.services{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:3rem}
+.service-categories{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.category-title{font-size:1.75rem;margin-bottom:1.25rem}
+.service-group{font-size:1.1rem;color:var(--lilac);margin:1.5rem 0 .75rem}
+.services h4{font-size:1.25rem;font-weight:500}
+.services .service-price{font-weight:600;margin-top:.35rem}
+.service-category{min-width:0}
+.services{list-style:none;padding:0;display:grid;grid-template-columns:1fr;column-gap:3rem}
 .services li{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.4rem 0;border-top:1px solid rgba(233,213,234,.25)}
 .services p{color:var(--lilac);font-size:.97rem;max-width:34ch}
 .services .btn{padding:.5rem 1.1rem;font-size:.95rem;flex-shrink:0}
@@ -81,7 +89,7 @@ footer{padding:2rem 0;background:var(--ink);color:var(--lilac);text-align:center
   section{padding:3.5rem 0}
   .hero .wrap,.visit{grid-template-columns:1fr}
   .arch{justify-self:center;max-width:320px;order:-1}
-  .services{grid-template-columns:1fr}
+  .service-categories,.services{grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr)}
   .menu{display:block}
   .head-cta{display:none}

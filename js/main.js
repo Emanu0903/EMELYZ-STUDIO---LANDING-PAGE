@@ -1,13 +1,20 @@
 /* ===== CONFIGURACIÓN: editar solo esta sección ===== */
 const WHATSAPP = "50360700168"; // código de país + número, sin + ni espacios
-const DEFAULT_MSG = "Hola, quiero agendar una cita en EMELYZ STUDIO.";
+const DEFAULT_MSG = "Hola, quiero agendar una cita en EMILYZ STUDIO.";
 const SERVICES = [
-  ["Corte y peinado","Corte a tu estilo, secado y peinado."],
-  ["Color y mechas","Tintes, balayage y retoques de raíz."],
-  ["Tratamientos capilares","Hidratación, keratina y reparación."],
-  ["Manicure y pedicure","Esmalte tradicional, semipermanente y acrílico."],
-  ["Maquillaje","Para eventos, graduaciones y sesiones."],
-  ["Cejas y pestañas","Diseño, depilación y laminado."]
+  { category: "Pestañas", groups: [
+    { name: null, items: [["Lifting de pestañas", 15]] },
+    { name: "Extensiones de pestañas", items: [
+      ["Clásicas / naturales", 20], ["Efecto rímel", 22], ["Híbridas", 25],
+      ["Medio volumen", 28], ["Full volumen", 30], ["Efecto wispy", 30]
+    ] }
+  ] },
+  { category: "Cejas", groups: [
+    { name: null, items: [
+      ["Tinte de cejas", 10], ["Laminado de cejas", 10],
+      ["Depilación con hilo y cera", 5], ["Depilación con navaja", 3]
+    ] }
+  ] }
 ];
 // 0 = domingo ... 6 = sábado. [apertura, cierre] en horas (24h). null = cerrado
 const HOURS = {1:[9,18],2:[9,18],3:[9,18],4:[9,18],5:[9,18],6:[9,16],0:null};
@@ -23,9 +30,16 @@ document.querySelectorAll("[data-wa]").forEach(a=>{
 });
 
 // Servicios (cada botón abre WhatsApp con el servicio ya escrito)
-document.getElementById("servicesList").innerHTML = SERVICES.map(([n,d])=>
-  `<li><div><h3>${n}</h3><p>${d}</p></div>
-   <a class="btn" target="_blank" rel="noopener" href="${wa(`Hola, quiero consultar disponibilidad para: ${n}.`)}">Consultar</a></li>`).join("");
+document.getElementById("servicesList").innerHTML = SERVICES.map(({category, groups}, i) =>
+  `<div class="service-category" aria-labelledby="category-${i}">
+    <h3 class="category-title" id="category-${i}">${category}</h3>
+    ${groups.map(({name, items}) => `${name ? `<h4 class="service-group">${name}</h4>` : ""}
+      <ul class="services">${items.map(([service, price]) => {
+        const fullName = name ? `${name}: ${service}` : `${category}: ${service}`;
+        return `<li><div><h4>${service}</h4><p class="service-price">$${price}</p></div>
+          <a class="btn" target="_blank" rel="noopener" aria-label="Consultar ${fullName} por $${price}" href="${wa(`Hola, quiero consultar disponibilidad para ${fullName} ($${price}).`)}">Consultar</a></li>`;
+      }).join("")}</ul>`).join("")}
+  </div>`).join("");
 
 // Horarios y estado "abierto ahora"
 const now = new Date(), today = now.getDay();
