@@ -10,7 +10,7 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--rose);outline-offset:3px}
 .wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
 section{padding:5rem 0}
-h1,h2,h3,h4{font-family:var(--display);line-height:1.05;letter-spacing:-.02em}
+h1,h2,h3,h4,h5{font-family:var(--display);line-height:1.05;letter-spacing:-.02em}
 h1{font-size:clamp(2.6rem,7vw,4.9rem);font-weight:800}
 h2{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:800;margin-bottom:.75rem}
 h3{font-size:1.25rem;font-weight:500}
@@ -26,12 +26,10 @@ h3{font-size:1.25rem;font-weight:500}
 header{position:sticky;top:0;z-index:20;background:rgba(248,240,247,.92);backdrop-filter:blur(8px)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{font:800 1.25rem var(--display);text-decoration:none;letter-spacing:.01em}
-.logo-monogram{display:none;font-family:"Bodoni MT",Didot,"Times New Roman",serif;font-size:54px;font-weight:400;line-height:1;letter-spacing:-.1em;color:var(--ink)}
-.monogram-e,.monogram-z{display:inline-block}
-.monogram-z{transform:scaleX(-1);margin-left:-.08em}
 nav ul{display:flex;gap:1.75rem;list-style:none;padding:0}
 nav a{text-decoration:none;font-weight:600}
 nav a:hover{color:var(--rose)}
+.nav-cta-mobile{display:none}
 .menu{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--ink)}
 .head-cta{padding:.55rem 1.1rem}
 
@@ -52,7 +50,7 @@ nav a:hover{color:var(--rose)}
 .service-categories{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
 .category-title{font-size:1.75rem;margin-bottom:1.25rem}
 .service-group{font-size:1.1rem;color:var(--lilac);margin:1.5rem 0 .75rem}
-.services h4{font-size:1.25rem;font-weight:500}
+.services .service-name{font-size:1.25rem;font-weight:500}
 .services .service-price{font-weight:600;margin-top:.35rem}
 .service-category{min-width:0}
 .services{list-style:none;padding:0;display:grid;grid-template-columns:1fr;column-gap:3rem}
@@ -78,6 +76,7 @@ table{width:100%;border-collapse:collapse;margin-bottom:1.5rem}
 td{padding:.6rem 0;border-bottom:1px solid rgba(43,21,48,.18)}
 td:last-child{text-align:right}
 tr.today{font-weight:600;color:var(--rose)}
+.visit-note{margin:.5rem 0 1.5rem}
 .map{border:0;width:100%;height:100%;min-height:320px;border-radius:1.25rem}
 
 /* Cierre */
@@ -86,12 +85,10 @@ tr.today{font-weight:600;color:var(--rose)}
 footer{padding:2rem 0;background:var(--ink);color:var(--lilac);text-align:center;font-size:.95rem}
 
 /* WhatsApp flotante */
-.fab{position:fixed;right:1.1rem;bottom:1.1rem;z-index:30;display:flex;align-items:center;gap:.5rem;background:var(--wa);color:#073B1C;font-weight:600;text-decoration:none;padding:.8rem 1.2rem;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
-.fab img{width:24px;height:24px;flex-shrink:0}
+.fab{position:fixed;right:1.1rem;bottom:1.1rem;z-index:30;display:flex;align-items:center;gap:.5rem;background:var(--wa);color:#073B1C;font-weight:600;text-decoration:none;padding:.8rem 1.2rem;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:transform .15s}
+.fab:hover{transform:translateY(-2px)}
 
 @media (max-width:820px){
-  .logo-text{display:none}
-  .logo-monogram{display:inline-flex;align-items:center;padding-right:.1em}
   section{padding:3.5rem 0}
   .hero .wrap,.visit{grid-template-columns:1fr}
   .arch{justify-self:center;max-width:320px;order:-1}
@@ -102,5 +99,6 @@ footer{padding:2rem 0;background:var(--ink);color:var(--lilac);text-align:center
   nav{position:absolute;inset:68px 0 auto 0;background:var(--bg);display:none;padding:1rem 1.25rem 1.5rem}
   nav.open{display:block}
   nav ul{flex-direction:column;gap:1rem}
+  .nav-cta-mobile{display:block;margin-top:.5rem}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
