@@ -1,3 +1,12 @@
+// Aplica la hoja de Google Fonts sin bloquear el renderizado inicial
+// (ya fue precargada con <link rel="preload" as="style"> en el HTML).
+(() => {
+  const l = document.createElement("link");
+  l.rel = "stylesheet";
+  l.href = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap";
+  document.head.appendChild(l);
+})();
+
 /* ===== CONFIGURACIÓN: editar solo esta sección ===== */
 const WHATSAPP = "50360700168"; // código de país + número, sin + ni espacios
 const DEFAULT_MSG = "Hola, quiero agendar una cita en EMILYZ STUDIO.";
@@ -58,3 +67,17 @@ menu.addEventListener("click",()=>{ const o = nav.classList.toggle("open"); menu
 nav.addEventListener("click",e=>{ if(e.target.tagName==="A"){ nav.classList.remove("open"); menu.setAttribute("aria-expanded",false);} });
 
 document.getElementById("year").textContent = now.getFullYear();
+
+// Mapa: se carga solo cuando se acerca al viewport, para no bloquear el render inicial
+const map = document.querySelector("iframe.map");
+if (map && map.dataset.src) {
+  const loadMap = () => { if (!map.getAttribute("src")) map.src = map.dataset.src; };
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => {
+      if (es.some(e => e.isIntersecting)) { loadMap(); io.disconnect(); }
+    }, { rootMargin: "400px" });
+    io.observe(map);
+  } else {
+    loadMap();
+  }
+}
