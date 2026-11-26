@@ -10,6 +10,7 @@
 /* ===== CONFIGURACIÓN: editar solo esta sección ===== */
 const WHATSAPP = "50360700168"; // código de país + número, sin + ni espacios
 const DEFAULT_MSG = "Hola, quiero agendar una cita en EMILYZ STUDIO.";
+const TIMEZONE = "America/El_Salvador";
 const SERVICES = [
   { category: "Pestañas", groups: [
     { name: null, items: [["Lifting de pestañas", 15]] },
@@ -33,38 +34,106 @@ const DAYS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábad
 const wa = t => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(t||DEFAULT_MSG)}`;
 const fmt = h => { const s = h>=12 ? "p. m." : "a. m."; return `${h%12||12}:00 ${s}`; };
 
+function getLocalTime(tz) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: tz,
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    year: "numeric",
+    hourCycle: "h23"
+  }).formatToParts(new Date());
+  const get = type => parts.find(p => p.type === type).value;
+  const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+  return {
+    day: dayMap[get("weekday")],
+    hour: Number(get("hour")) + Number(get("minute")) / 60,
+    year: Number(get("year"))
+  };
+}
+
+function getNextOpening(currentDay, currentHour) {
+  const todayHours = HOURS[currentDay];
+  if (todayHours && currentHour < todayHours[0]) {
+    return `abre hoy a las ${fmt(todayHours[0])}`;
+  }
+  for (let offset = 1; offset <= 7; offset++) {
+    const nextDay = (currentDay + offset) % 7;
+    if (HOURS[nextDay]) {
+      const label = offset === 1 ? "mañana" : `el ${DAYS[nextDay].toLowerCase()}`;
+      return `abre ${label} a las ${fmt(HOURS[nextDay][0])}`;
+    }
+  }
+  return "";
+}
+
 // Enlaces de WhatsApp
-document.querySelectorAll("[data-wa]").forEach(a=>{
-  a.href = wa(a.dataset.wa); a.target = "_blank"; a.rel = "noopener";
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = wa(a.dataset.wa);
+  a.target = "_blank";
+  a.rel = "noopener";
 });
 
 // Servicios (cada botón abre WhatsApp con el servicio ya escrito)
 document.getElementById("servicesList").innerHTML = SERVICES.map(({category, groups}, i) =>
   `<div class="service-category" aria-labelledby="category-${i}">
     <h3 class="category-title" id="category-${i}">${category}</h3>
-    ${groups.map(({name, items}) => `${name ? `<h4 class="service-group">${name}</h4>` : ""}
+    ${groups.map(({name, items}) => {
+      const headingTag = name ? "h5" : "h4";
+      return `${name ? `<h4 class="service-group">${name}</h4>` : ""}
       <ul class="services">${items.map(([service, price]) => {
         const fullName = name ? `${name}: ${service}` : `${category}: ${service}`;
-        return `<li><div><h4>${service}</h4><p class="service-price">$${price}</p></div>
+        return `<li><div><${headingTag} class="service-name">${service}</${headingTag}><p class="service-price">$${price}</p></div>
           <a class="btn" target="_blank" rel="noopener" aria-label="Consultar ${fullName} por $${price}" href="${wa(`Hola, quiero consultar disponibilidad para ${fullName} ($${price}).`)}">Consultar</a></li>`;
-      }).join("")}</ul>`).join("")}
+      }).join("")}</ul>`;
+    }).join("")}
   </div>`).join("");
 
 // Horarios y estado "abierto ahora"
-const now = new Date(), today = now.getDay();
+const { day: today, hour: hr, year } = getLocalTime(TIMEZONE);
 const order = [1,2,3,4,5,6,0];
-document.getElementById("hours").innerHTML = order.map(d=>{
+document.getElementById("hours").innerHTML = order.map(d => {
   const h = HOURS[d];
   return `<tr class="${d===today?"today":""}"><td>${DAYS[d]}</td><td>${h?`${fmt(h[0])} – ${fmt(h[1])}`:"Cerrado"}</td></tr>`;
 }).join("");
-const st = document.getElementById("status"), t = HOURS[today], hr = now.getHours()+now.getMinutes()/60;
-if (t && hr>=t[0] && hr<t[1]) { st.textContent = `Abierto ahora · cierra a las ${fmt(t[1])}`; st.classList.add("open"); }
-else st.textContent = "Cerrado ahora";
+
+const st = document.getElementById("status"), t = HOURS[today];
+if (t && hr >= t[0] && hr < t[1]) {
+  st.textContent = `Abierto ahora · cierra a las ${fmt(t[1])}`;
+  st.classList.add("open");
+} else {
+  const next = getNextOpening(today, hr);
+  st.textContent = next ? `Cerrado ahora · ${next}` : "Cerrado ahora";
+}
 
 // Menú móvil
 const menu = document.getElementById("menu"), nav = document.getElementById("nav");
-menu.addEventListener("click",()=>{ const o = nav.classList.toggle("open"); menu.setAttribute("aria-expanded",o); });
-nav.addEventListener("click",e=>{ if(e.target.tagName==="A"){ nav.classList.remove("open"); menu.setAttribute("aria-expanded",false);} });
+const closeMenu = () => {
+  nav.classList.remove("open");
+  menu.setAttribute("aria-expanded", "false");
+};
+
+menu.addEventListener("click", () => {
+  const isOpen = nav.classList.toggle("open");
+  menu.setAttribute("aria-expanded", String(isOpen));
+});
+
+nav.addEventListener("click", e => {
+  if (e.target.closest("a")) closeMenu();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && nav.classList.contains("open")) {
+    closeMenu();
+    menu.focus();
+  }
+});
+
+document.addEventListener("click", e => {
+  if (nav.classList.contains("open") && !nav.contains(e.target) && !menu.contains(e.target)) {
+    closeMenu();
+  }
+});
 
 document.getElementById("year").textContent = now.getFullYear();
 
