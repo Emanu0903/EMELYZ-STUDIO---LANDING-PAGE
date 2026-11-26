@@ -1,7 +1,7 @@
 
 /* ===== CONFIGURACIÓN: editar solo esta sección ===== */
 
-const WHATSAPP = "50360700168"; // Código de país + número, sin + ni espacios
+const WHATSAPP = "50370137793"; // Código de país + número, sin + ni espacios
 
 const DEFAULT_MSG = "Hola, quiero agendar una cita en EMILYZ STUDIO.";
 
