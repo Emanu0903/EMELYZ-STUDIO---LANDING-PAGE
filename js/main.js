@@ -78,6 +78,39 @@ const fmt = (h) => {
     return `${h % 12 || 12}:00 ${s}`;
 };
 
+function getLocalTime(tz) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: tz,
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    year: "numeric",
+    hourCycle: "h23"
+  }).formatToParts(new Date());
+  const get = type => parts.find(p => p.type === type).value;
+  const dayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+  return {
+    day: dayMap[get("weekday")],
+    hour: Number(get("hour")) + Number(get("minute")) / 60,
+    year: Number(get("year"))
+  };
+}
+
+function getNextOpening(currentDay, currentHour) {
+  const todayHours = HOURS[currentDay];
+  if (todayHours && currentHour < todayHours[0]) {
+    return `abre hoy a las ${fmt(todayHours[0])}`;
+  }
+  for (let offset = 1; offset <= 7; offset++) {
+    const nextDay = (currentDay + offset) % 7;
+    if (HOURS[nextDay]) {
+      const label = offset === 1 ? "mañana" : `el ${DAYS[nextDay].toLowerCase()}`;
+      return `abre ${label} a las ${fmt(HOURS[nextDay][0])}`;
+    }
+  }
+  return "";
+}
+
 // Enlaces de WhatsApp
 document.querySelectorAll("[data-wa]").forEach(a => {
     a.href = wa(a.dataset.wa);
