@@ -6,16 +6,22 @@
 <title>EMILYZ STUDIO | Estudio de cejas y pestañas</title>
 <meta name="description" content="Realza tu belleza natural en EMILYZ STUDIO: extensiones y lifting de pestañas, tinte, laminado y depilación de cejas. Consulta precios y agenda por WhatsApp.">
 <meta name="theme-color" content="#2B1530">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234A2350'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' font-weight='700' text-anchor='middle' fill='%23E9D5EA'%3EE%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header>
   <div class="wrap bar">
-    <a class="logo" href="#inicio">EMILYZ STUDIO</a>
+    <a class="logo" href="#inicio" aria-label="Emilyz Studio, ir al inicio">
+      <span class="logo-text">EMILYZ STUDIO</span>
+      <span class="logo-monogram" aria-hidden="true"><span class="monogram-e"></span><span class="monogram-z"></span></span>
+    </a>
+
     <nav id="nav" aria-label="Principal">
       <ul>
         <li><a href="#servicios">Servicios</a></li>
@@ -40,7 +46,7 @@
           <a class="btn ghost" href="#servicios">Ver servicios</a>
         </div>
       </div>
-      <figure class="ph arch"><img src="assets/web/portada.jpg" alt="Interior de Emilyz Studio con el nombre del estudio en la pared y su área de atención" width="4080" height="2296" fetchpriority="high"></figure>
+      <figure class="ph arch"><img src="assets/web/portada.webp" srcset="assets/web/portada-640.webp 640w, assets/web/portada.webp 1400w" sizes="(max-width:820px) 320px, 420px" alt="Interior de Emilyz Studio con el nombre del estudio en la pared y su área de atención" width="1400" height="788" fetchpriority="high"></figure>
     </div>
   </section>
 
@@ -57,12 +63,12 @@
       <h2>Nuestros trabajos</h2>
       <p class="lead">Resultados reales de nuestras clientas.</p>
       <div class="gallery">
-        <figure class="ph"><img src="assets/web/pestanas-detalle.jpg" alt="Detalle de extensiones de pestañas realizadas en el estudio" loading="lazy" width="1200" height="1600"></figure>
-        <figure class="ph"><img src="assets/web/cejas-definidas.jpg" alt="Cejas definidas y cuidadas en Emilyz Studio" loading="lazy" width="1200" height="1600"></figure>
-        <figure class="ph"><img src="assets/web/mirada.jpg" alt="Resultado de pestañas que realzan la mirada" loading="lazy" width="1200" height="1600"></figure>
-        <figure class="ph"><img src="assets/web/pestanas-volumen.jpg" alt="Vista de cerca de un trabajo de extensiones de pestañas" loading="lazy" width="1200" height="1600"></figure>
-        <figure class="ph"><img src="assets/web/cejas-pestanas.jpg" alt="Resultado de cejas y pestañas en una clienta del estudio" loading="lazy" width="1200" height="1600"></figure>
-        <figure class="ph"><img src="assets/web/perfil.jpg" alt="Vista de perfil del acabado de cejas y pestañas" loading="lazy" width="1200" height="1600"></figure>
+        <figure class="ph"><img src="assets/web/pestanas-detalle.webp" srcset="assets/web/pestanas-detalle-400.webp 400w, assets/web/pestanas-detalle.webp 533w" sizes="(max-width:820px) 180px, 360px" alt="Detalle de extensiones de pestañas realizadas en el estudio" loading="lazy" width="533" height="800"></figure>
+        <figure class="ph"><img src="assets/web/cejas-definidas.webp" srcset="assets/web/cejas-definidas-400.webp 400w, assets/web/cejas-definidas.webp 600w" sizes="(max-width:820px) 180px, 360px" alt="Cejas definidas y cuidadas en Emilyz Studio" loading="lazy" width="600" height="800"></figure>
+        <figure class="ph"><img src="assets/web/mirada.webp" srcset="assets/web/mirada-400.webp 400w, assets/web/mirada.webp 639w" sizes="(max-width:820px) 180px, 360px" alt="Resultado de pestañas que realzan la mirada" loading="lazy" width="639" height="800"></figure>
+        <figure class="ph"><img src="assets/web/pestanas-volumen.webp" srcset="assets/web/pestanas-volumen-400.webp 400w, assets/web/pestanas-volumen.webp 534w" sizes="(max-width:820px) 180px, 360px" alt="Vista de cerca de un trabajo de extensiones de pestañas" loading="lazy" width="534" height="800"></figure>
+        <figure class="ph"><img src="assets/web/cejas-pestanas.webp" srcset="assets/web/cejas-pestanas-400.webp 400w, assets/web/cejas-pestanas.webp 640w" sizes="(max-width:820px) 180px, 360px" alt="Resultado de cejas y pestañas en una clienta del estudio" loading="lazy" width="640" height="800"></figure>
+        <figure class="ph"><img src="assets/web/perfil.webp" srcset="assets/web/perfil-400.webp 400w, assets/web/perfil.webp 600w" sizes="(max-width:820px) 180px, 360px" alt="Vista de perfil del acabado de cejas y pestañas" loading="lazy" width="600" height="800"></figure>
       </div>
     </div>
   </section>
@@ -78,8 +84,8 @@
           <p class="visit-note">Si no encuentras el local, escríbenos y te enviamos la ubicación.</p>
           <a class="btn" data-wa="Hola, necesito indicaciones para llegar al estudio." href="#">Pedir indicaciones</a>
         </div>
-        <!-- Reemplazar q= por la dirección exacta o usar "Compartir > Insertar mapa" de Google Maps -->
-        <iframe class="map" title="Mapa de EMILYZ STUDIO" loading="lazy" src="https://www.google.com/maps?q=EMILYZ+STUDIO&output=embed"></iframe>
+        
+        <iframe class="map" title="Mapa de EMILYZ STUDIO" loading="lazy" data-src="https://www.google.com/maps?q=EMILYZ+STUDIO&output=embed"></iframe>
       </div>
     </div>
   </section>
